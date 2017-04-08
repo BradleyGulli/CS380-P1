@@ -28,19 +28,21 @@ public class ChatClient {
 			l.start();
 			
 			/*
-			 * gets the username from the user
+			 * gets the user name from the user
 			 */
-			System.out.println("please enter a username");
+			System.out.println("please enter a user name");
 			String username = client.readLine();
 			pw.println(username);
 			pw.flush();
-			
-			System.out.println("You are now connected and can broadcast messages");
+			Thread.sleep(1000);
+			if(l.isAlive()){
+				System.out.println("You are connected and can start sending messages");
+			}
 		
 			/*
 			 * continues to send messages to the server until the client is closed
 			 */
-			while(true){
+			while(l.isAlive()){
 				pw.println(client.readLine());
 				pw.flush();
 			}
